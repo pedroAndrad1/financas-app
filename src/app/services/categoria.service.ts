@@ -11,25 +11,25 @@ export class CategoriaService {
 
   constructor(private httpClient: HttpClient) {}
 
-  private API_URL = "http://localhost:3000";
+  private API_BASE = "http://localhost:3000/categorias";
 
   getAll():Observable<Categoria[]>{
-    return this.httpClient.get<Categoria[]>(this.API_URL);
+    return this.httpClient.get<Categoria[]>(this.API_BASE);
   }
 
   getById(id: number): Observable<Categoria>{
-    return this.httpClient.get<Categoria>(`${this.API_URL}/${id}`);
+    return this.httpClient.get<Categoria>(`${this.API_BASE}/${id}`);
   }
 
   addCategoria(categoria: Categoria): Observable<Categoria>{
-    return this.httpClient.post<Categoria>(this.API_URL, categoria);
+    return this.httpClient.post<Categoria>(this.API_BASE, categoria);
   }
 
   update(id: number, categoria: Categoria): Observable<Categoria>{
-    return this.httpClient.put<Categoria>(`${this.API_URL}/${id}`, categoria);
+    return this.httpClient.put<Categoria>(`${this.API_BASE}/${id}`, categoria);
   }
 
   delete(id: number): Observable<Categoria>{
-    return this.httpClient.delete<Categoria>(`${this.API_URL}/${id}`);
+    return this.httpClient.delete<Categoria>(`${this.API_BASE}/${id}`);
   }
 }
