@@ -10,7 +10,7 @@
   <div class="row mb-5">
     <div class="col-6">
       <h1 class="h2 border-left pl-4 ">
-        Formulário de categoria
+        {{ titulo }}
       </h1>
     </div>
     <div class="col-6">
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <form [formGroup] = "categoriaForm">
+  <form [formGroup] = "categoriaForm" (submit) = "onSubmit()">
     <div class="card mb-4">
       <div class="card-header">
         Informações sobre a categoria
@@ -29,18 +29,27 @@
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="nome">Nome</label>
-            <input type="text" name="" id="nome" class="form-control">
+            <input type="text" name="" id="nome" class="form-control" formControlName="nome">
+
+            <!--Mensagens de erro-->
+            <div class="text-danger" *ngIf="categoriaForm.get('nome').invalid && categoriaForm.get('nome').touched">
+              <div *ngIf="categoriaForm.get('nome').errors.required">Por favor, insira um nome</div>
+              <div *ngIf="categoriaForm.get('nome').errors.minlength">Mínimo de dois caracteres</div>
+            </div>
           </div>
 
           <div class="form-group col-md-8">
             <label for="descricao">Descrição</label>
-            <input type="text" name="" id="descricao" class="form-control">
+            <input type="text" name="" id="descricao" class="form-control" formControlName="descricao">
           </div>
         </div>
       </div>
     </div>
 
-    <button type="submit" class="btn btn-success btn-lg float-right">Salvar</button>
+    <button type="submit" [disabled] = "categoriaForm.invalid || submittingForm " 
+      class="btn btn-success btn-lg float-right">
+      Salvar
+    </button>
   </form>
 
 </div>
