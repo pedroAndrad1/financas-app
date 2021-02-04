@@ -18,6 +18,7 @@ export class CategoriaFormComponent implements OnInit, AfterContentChecked {
   submittingForm = false;
   categoria = new Categoria;
   titulo: string;
+  errorsMessages: string[];
 
 
   constructor(
@@ -91,10 +92,12 @@ export class CategoriaFormComponent implements OnInit, AfterContentChecked {
           toastr.success("Ação realizada com sucesso!");
           this.router.navigateByUrl("/categorias");
           this.submittingForm = false;
+          this.errorsMessages = null;
         },
         error =>{
           toastr.error("Erro ao realizar a ação, tente novamente mais tarde");
           this.submittingForm = false;
+          this.buildErrorMessages(error);
         } 
       )
   }
@@ -110,23 +113,25 @@ export class CategoriaFormComponent implements OnInit, AfterContentChecked {
           toastr.success("Ação realizada com sucesso!");
           this.router.navigateByUrl("/categorias");
           this.submittingForm = false;
+          this.errorsMessages = null;
         },
         error =>{
           toastr.error("Erro ao realizar a ação, tente novamente mais tarde");
           this.submittingForm = false;
+          this.buildErrorMessages(error);
         } 
       )
   }
 
-  onSubmit(){
-    console.log(this.acao);
+  private buildErrorMessages(error){
+    error.status == 422?
+      this.errorsMessages = JSON.parse(error.__body).errors
+    :
+    this.errorsMessages = ['Erro de comunicação com o servidor, tente novamente mais tarde.']
+  }
+
+  onSubmit(){  
     this.submittingForm = true;
-    if(this.acao == 'nova'){
-      this.addCategoria();
-    }
-    else{
-      console.log("entrei aqui");
-      this.updateCategoria();
-    }
+    this.acao == 'nova'? this.addCategoria() : this.updateCategoria()
   }
 }

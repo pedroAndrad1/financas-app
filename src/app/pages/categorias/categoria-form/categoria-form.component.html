@@ -46,6 +46,13 @@
       </div>
     </div>
 
+    <div class="alert alert-danger mt-4 animeLeft" *ngIf="errorsMessages">
+      <strong>Erro no contato com servidor</strong>
+      <ul>
+        <li *ngFor="let error of errorsMessages"> {{ error }} </li>
+      </ul>
+    </div>
+
     <button type="submit" [disabled] = "categoriaForm.invalid || submittingForm " 
       class="btn btn-success btn-lg float-right">
       Salvar
