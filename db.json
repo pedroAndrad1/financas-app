@@ -1,29 +1,171 @@
 {
   "categorias": [
-      {
-          "id": 1,
-          "nome": "Moradia",
-          "descricao": "Pagamentos de Contas da Casa"
-      },
-      {
-          "id": 2,
-          "nome": "Saúde",
-          "descricao": "Plano de Saúde e Remédios"
-      },
-      {
-          "id": 3,
-          "nome": "Lazer",
-          "descricao": "Cinema, parques, praia, etc"
-      },
-      {
-          "id": 4,
-          "nome": "Salário",
-          "descricao": "Recebimento de Salário"
-      },
-      {
-          "id": 5,
-          "nome": "Freelas",
-          "descricao": "Trabalhos como freelancer"
-      }
+    {
+      "id": 1,
+      "nome": "Moradia",
+      "descricao": "Pagamentos de Contas da Casa"
+    },
+    {
+      "id": 2,
+      "nome": "Saúde",
+      "descricao": "Plano de Saúde e Remédios"
+    },
+    {
+      "id": 3,
+      "nome": "Lazer",
+      "descricao": "Cinema, parques, praia, etc"
+    },
+    {
+      "id": 4,
+      "nome": "Salário",
+      "descricao": "Recebimento de Salário"
+    },
+    {
+      "id": 5,
+      "nome": "Freelas",
+      "descricao": "Trabalhos como freelancer"
+    },
+    {
+      "id": 6,
+      "nome": "Transporte",
+      "descricao": "Uber e afins"
+    }
+  ],
+  "lancamentos": [
+    {
+      "id": 2,
+      "nome": "Suplementos",
+      "categoriaId": 2,
+      "pago": false,
+      "data": "14/10/2018",
+      "valor": "15,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 3,
+      "nome": "Salário na Empresa X",
+      "categoriaId": 4,
+      "pago": true,
+      "data": "15/10/2018",
+      "valor": "4405,49",
+      "tipo": "receita"
+    },
+    {
+      "id": 4,
+      "nome": "Aluguel de Filme",
+      "categoriaId": 3,
+      "pago": true,
+      "data": "16/10/2018",
+      "valor": "15,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 5,
+      "nome": "Suplementos",
+      "categoriaId": 2,
+      "pago": true,
+      "data": "17/10/2018",
+      "valor": "30,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 6,
+      "nome": "Video Game da Filha",
+      "categoriaId": 3,
+      "pago": false,
+      "data": "17/10/2018",
+      "valor": "15,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 11,
+      "nome": "Uber",
+      "categoriaId": 6,
+      "pago": true,
+      "data": "17/10/2018",
+      "valor": "30,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 12,
+      "nome": "Aluguel",
+      "categoriaId": 1,
+      "pago": false,
+      "data": "23/10/2018",
+      "valor": "15,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 13,
+      "nome": "Gás de Cozinha",
+      "categoriaId": 1,
+      "pago": false,
+      "data": "25/10/2018",
+      "valor": "30,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 14,
+      "nome": "Pagamento Pelo Projeto XYZ",
+      "categoriaId": 5,
+      "pago": true,
+      "data": "25/10/2018",
+      "valor": "2980,00",
+      "tipo": "receita"
+    },
+    {
+      "id": 19,
+      "nome": "Aluguel de Filme",
+      "categoriaId": 3,
+      "pago": false,
+      "data": "07/11/2018",
+      "valor": "15,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 21,
+      "nome": "Video Game da Filha",
+      "categoriaId": 3,
+      "pago": true,
+      "data": "17/11/2018",
+      "valor": "30,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 22,
+      "nome": "Cinema",
+      "categoriaId": 3,
+      "pago": true,
+      "data": "18/11/2018",
+      "valor": "15,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 23,
+      "nome": "Jiu Jitsu",
+      "categoriaId": 2,
+      "pago": false,
+      "data": "21/11/2018",
+      "valor": "130,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 44,
+      "nome": "Uber",
+      "categoriaId": 6,
+      "pago": true,
+      "data": "28/11/2018",
+      "valor": "15,00",
+      "tipo": "despesa"
+    },
+    {
+      "id": 55,
+      "nome": "Cinema",
+      "categoriaId": 3,
+      "pago": false,
+      "data": "28/11/2018",
+      "valor": "30,00",
+      "tipo": "despesa"
+    }
   ]
 }

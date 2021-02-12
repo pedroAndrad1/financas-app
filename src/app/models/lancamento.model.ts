@@ -9,7 +9,6 @@ export class Lancamento{
     data?: Date;
     pago?: boolean;
     categoriaId?: number;
-    categoria?: Categoria;
 
     static tipos ={
         despesa: 'Despesa',
