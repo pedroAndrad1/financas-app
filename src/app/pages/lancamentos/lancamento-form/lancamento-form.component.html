@@ -2,28 +2,28 @@
   <nav class="mb-5">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-      <li class="breadcrumb-item"><a routerLink="/categorias">Categorias</a></li>
-      <li class="breadcrumb-item active">Nova categoria</li>
+      <li class="breadcrumb-item"><a routerLink="/lancamentos">Lançamentos</a></li>
+      <li class="breadcrumb-item active">Formulário de lançamentos</li>
     </ol>
   </nav>
 
   <div class="row mb-5">
-    <div class="col-6">
+    <div class="col-9">
       <h1 class="h2 border-left pl-4 ">
         {{ titulo }}
       </h1>
     </div>
-    <div class="col-6">
-      <a routerLink="/categorias" class="btn btn-secondary float-right ">
-       Voltar para lista de categorias
+    <div class="col-3">
+      <a routerLink="/lancamentos" class="btn btn-secondary float-right ">
+       Voltar para lista de lançamentos
       </a>
     </div>
   </div>
 
-  <form [formGroup] = "categoriaForm" (submit) = "onSubmit()">
+  <form [formGroup] = "lancamentoForm" (submit) = "onSubmit()">
     <div class="card mb-4">
       <div class="card-header">
-        Informações sobre a categoria
+        Informações sobre o lançamento
       </div>
       <div class="card-body">
         <div class="form-row">
@@ -32,9 +32,9 @@
             <input type="text" name="" id="nome" class="form-control" formControlName="nome">
 
             <!--Mensagens de erro-->
-            <div class="text-danger" *ngIf="categoriaForm.get('nome').invalid && categoriaForm.get('nome').touched">
-              <div *ngIf="categoriaForm.get('nome').errors.required">Por favor, insira um nome</div>
-              <div *ngIf="categoriaForm.get('nome').errors.minlength">Mínimo de dois caracteres</div>
+            <div class="text-danger" *ngIf="lancamentoForm.get('nome').invalid && lancamentoForm.get('nome').touched">
+              <div *ngIf="lancamentoForm.get('nome').errors.required">Por favor, insira um nome</div>
+              <div *ngIf="lancamentoForm.get('nome').errors.minlength">Mínimo de dois caracteres</div>
             </div>
           </div>
 
@@ -53,7 +53,7 @@
       </ul>
     </div>
 
-    <button type="submit" [disabled] = "categoriaForm.invalid || submittingForm " 
+    <button type="submit" [disabled] = "lancamentoForm.invalid || submittingForm " 
       class="btn btn-success btn-lg float-right">
       Salvar
     </button>
