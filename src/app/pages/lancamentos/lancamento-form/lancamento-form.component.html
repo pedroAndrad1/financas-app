@@ -25,24 +25,124 @@
       <div class="card-header">
         Informações sobre o lançamento
       </div>
+
       <div class="card-body">
         <div class="form-row">
+          <!--NOME-->
           <div class="form-group col-md-4">
-            <label for="nome">Nome</label>
+            <label for="nome">Lançamento</label>
             <input type="text" name="" id="nome" class="form-control" formControlName="nome">
-
             <!--Mensagens de erro-->
             <div class="text-danger" *ngIf="lancamentoForm.get('nome').invalid && lancamentoForm.get('nome').touched">
               <div *ngIf="lancamentoForm.get('nome').errors.required">Por favor, insira um nome</div>
               <div *ngIf="lancamentoForm.get('nome').errors.minlength">Mínimo de dois caracteres</div>
             </div>
+          </div>  
+
+          <!--DATA-->
+          <div class="form-group col-md-2">
+            <label for="data">Data</label>
+            <!--Component de calendar do primeNG-->
+            <p-calendar
+              id="data"
+              formControlName="data"
+              inputStyleClass="form-control"
+              dataType="string"
+              dateFormat="dd/mm/yy"
+              [locale]="ptBR"
+              [showButtonBar]="true"
+            >
+            </p-calendar>
+            <!--Mensagens de erro-->
+            <div 
+            class="text-danger" 
+            *ngIf="lancamentoForm.get('data').invalid && lancamentoForm.get('data').touched"
+            >
+              <div *ngIf="lancamentoForm.get('data').errors.required">Valor obrigatório</div>
+            </div>
+          </div>      
+
+          <!--TIPO-->
+          <div class="form-group col-md-2">
+           <label for="tipo">Tipo</label>
+           <select name="tipo" id="tipo" class="form-control" formControlName="tipo">
+             <option value="despesa">Despesa</option>
+             <option value="receita">Receita</option>
+           </select>
+           <!--Mensagens de erro-->
+           <div class="text-danger" *ngIf="lancamentoForm.get('tipo').invalid && lancamentoForm.get('tipo').touched">
+             <div *ngIf="lancamentoForm.get('tipo').errors.required">Tipo obrigatório</div>
+           </div> 
           </div>
 
-          <div class="form-group col-md-8">
-            <label for="descricao">Descrição</label>
-            <input type="text" name="" id="descricao" class="form-control" formControlName="descricao">
+          <!--VALOR-->
+          <div class="form-group col-md-3">
+            <label for="valor">Valor</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">R$</div>
+                <input [imask]="imaskValores" type="text" name="valor" id="valor" class="form-control text-right" 
+                formControlName="valor"
+                >
+              </div>
+            </div>
+            <!--Mensagens de erro-->
+            <div class="text-danger" *ngIf="lancamentoForm.get('valor').invalid && lancamentoForm.get('valor').touched">
+              <div *ngIf="lancamentoForm.get('valor').errors.required">Valor obrigatório</div>
+            </div>
           </div>
+          
         </div>
+        <div class="form-row">
+          
+          <!--DESCRIÇÃO-->
+          <div class="form-group col-md-5">
+            <label for="descricao">Descrição</label>
+            <input type="text" name="descricao" id="descricao" class="form-control" formControlName="descricao">
+          </div>
+
+          <!--Categoria-->
+          <div class="form-group col-md-2">
+            <label for="categoriaId">Categoria</label>
+            <select name="categoriaId" id="categoriaId" class="form-control" formControlName="categoriaId">
+              <option value="despesa">Despesa</option>
+              <option value="receita">Receita</option>
+            </select>
+            <!--Mensagens de erro-->
+            <div class="text-danger" *ngIf="lancamentoForm.get('categoriaId').invalid && lancamentoForm.get('categoriaId').touched">
+              <div *ngIf="lancamentoForm.get('categoriaId').errors.required">Tipo obrigatório</div>
+            </div> 
+           </div>
+           
+          <!--PAGO-->
+          <div class="form-group col-md-2">
+            <label for="pago">Status</label>
+            <div class="btn-group">
+              <label
+                [class.active]="lancamentoForm.get('pago').value == true"
+                (click) = setPagoStatus(true)
+                class="btn btn-outline-info"
+                >
+                Pago
+              </label>
+              <label
+                [class.active]="lancamentoForm.get('pago').value == false"
+                (click) = setPagoStatus(false)
+                class="btn btn-outline-info"
+              >
+              Pendente
+              </label>
+            </div>
+            <!--Mensagens de erro-->
+            <div class="text-danger" *ngIf="lancamentoForm.get('pago').invalid && lancamentoForm.get('pago').touched">
+             <div *ngIf="lancamentoForm.get('pago').errors.required">Valor obrigatório</div>
+            </div>
+          </div>
+
+
+        </div>
+        
+
       </div>
     </div>
 

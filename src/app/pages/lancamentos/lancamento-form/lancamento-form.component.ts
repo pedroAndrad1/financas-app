@@ -21,6 +21,34 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
   titulo: string;
   errorsMessages: string[];
 
+  //Mascara para os valores
+  imaskValores = {
+    //seta que o tipo tem que ser number
+    mask: Number,
+    //duas casas decimais
+    scale: 2,
+    //Sem separador de milhares
+    thousandSeparator: '',
+    padFractionalZeros: true,
+    normalizeZeros: true,
+    //separador para decimal
+    radix: ','
+  };
+
+  //Traducao para os calendar
+  ptBR = {
+    firstDayOfWeek: 0,
+    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+    dayNamesMin: ['Do', 'Se', 'Te', 'Qu', 'Qu', 'Se', 'Sa'],
+    monthNames: [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+      'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ],
+    monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+    today: 'Hoje',
+    clear: 'Limpar'
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -52,12 +80,12 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
       id: [null],
       nome: [null, Validators.compose([Validators.required, Validators.minLength(2)])],
       descricao: [null],
-      tipo: [null, [Validators.required] ],
-      valor: [null, [Validators.required] ],
-      data: [null, [Validators.required] ],
+      tipo: [null, [Validators.required]],
+      valor: [null, [Validators.required]],
+      data: [null, [Validators.required]],
       pago: [null, [Validators.required]],
       categoriaId: [null, [Validators.required]],
-      
+
     })
     console.log(this.lancamentoForm);
   }
@@ -90,7 +118,7 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
     }
   }
 
-  private addLancamento(){
+  private addLancamento() {
     //Montando a lancamento que sera enviada para o servidor
     const lancamento = Object.assign(new Lancamento(), this.lancamentoForm.value);
 
@@ -102,18 +130,18 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
           this.submittingForm = false;
           this.errorsMessages = null;
         },
-        error =>{
+        error => {
           toastr.error("Erro ao realizar a ação, tente novamente mais tarde");
           this.submittingForm = false;
           this.buildErrorMessages(error);
-        } 
+        }
       )
   }
 
-  private updateLancamento(){
-    
-     //Montando a lancamento que sera enviada para o servidor
-     const lancamento = Object.assign(new Lancamento(), this.lancamentoForm.value);
+  private updateLancamento() {
+
+    //Montando a lancamento que sera enviada para o servidor
+    const lancamento = Object.assign(new Lancamento(), this.lancamentoForm.value);
 
     this.lancamentoService.update(lancamento.id, lancamento)
       .subscribe(
@@ -123,23 +151,27 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
           this.submittingForm = false;
           this.errorsMessages = null;
         },
-        error =>{
+        error => {
           toastr.error("Erro ao realizar a ação, tente novamente mais tarde");
           this.submittingForm = false;
           this.buildErrorMessages(error);
-        } 
+        }
       )
   }
 
-  private buildErrorMessages(error){
-    error.status == 422?
+  private buildErrorMessages(error) {
+    error.status == 422 ?
       this.errorsMessages = JSON.parse(error.__body).errors
-    :
-    this.errorsMessages = ['Erro de comunicação com o servidor, tente novamente mais tarde.']
+      :
+      this.errorsMessages = ['Erro de comunicação com o servidor, tente novamente mais tarde.']
   }
 
-  onSubmit(){  
+  onSubmit() {
     this.submittingForm = true;
-    this.acao == 'nova'? this.addLancamento() : this.updateLancamento()
+    this.acao == 'nova' ? this.addLancamento() : this.updateLancamento()
+  }
+
+  private setPagoStatus(status: boolean){
+    this.lancamentoForm.get('pago').setValue(status);
   }
 }

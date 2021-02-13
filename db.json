@@ -35,11 +35,12 @@
     {
       "id": 2,
       "nome": "Suplementos",
-      "categoriaId": 2,
-      "pago": false,
+      "descricao": null,
+      "tipo": "despesa",
+      "valor": "100,00",
       "data": "14/10/2018",
-      "valor": "15,00",
-      "tipo": "despesa"
+      "pago": false,
+      "categoriaId": 2
     },
     {
       "id": 3,
