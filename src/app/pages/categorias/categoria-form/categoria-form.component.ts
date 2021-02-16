@@ -2,8 +2,8 @@ import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Categoria } from 'src/app/models/categoria.model';
-import { CategoriaService } from 'src/app/services/categoria.service';
+import { Categoria } from 'src/app/shared/models/categoria.model';
+import { CategoriaService } from 'src/app/shared/services/categoria.service';
 import toastr from "toastr";
 
 @Component({

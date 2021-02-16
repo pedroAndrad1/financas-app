@@ -3,10 +3,10 @@ import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Categoria } from 'src/app/models/categoria.model';
-import { Lancamento } from 'src/app/models/lancamento.model';
-import { CategoriaService } from 'src/app/services/categoria.service';
-import { LancamentoService } from 'src/app/services/lancamento.service';
+import { Categoria } from 'src/app/shared/models/categoria.model';
+import { Lancamento } from 'src/app/shared/models/lancamento.model';
+import { CategoriaService } from 'src/app/shared/services/categoria.service';
+import { LancamentoService } from 'src/app/shared/services/lancamento.service';
 import toastr from "toastr";
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Categoria } from 'src/app/models/categoria.model';
-import { CategoriaService } from 'src/app/services/categoria.service';
-import { Lancamento } from '../../../models/lancamento.model';
-import { LancamentoService } from '../../../services/lancamento.service';
+import { Categoria } from 'src/app/shared/models/categoria.model';
+import { CategoriaService } from 'src/app/shared/services/categoria.service';
+import { Lancamento } from '../../../shared/models/lancamento.model';
+import { LancamentoService } from '../../../shared/services/lancamento.service';
 
 @Component({
   selector: 'app-lancamento-list',

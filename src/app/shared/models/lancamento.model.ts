@@ -1,6 +1,7 @@
+import { BaseResourceModel } from "./base-resource.model";
 import { Categoria } from "./categoria.model";
 
-export class Lancamento{
+export class Lancamento implements BaseResourceModel{
     id?: number;
     nome?: string;
     descricao?: string;
