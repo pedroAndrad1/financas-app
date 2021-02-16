@@ -38,7 +38,7 @@
           <small *ngIf="lancamento.descricao">{{ lancamento.descricao }}</small>
         </td>
         <td>
-          {{ lancamentoCategoria(lancamento) }}
+          {{ lancamento.categoria.nome }}
         </td>
         <!--Property binding para fazer um if para uma class-->
         <td>

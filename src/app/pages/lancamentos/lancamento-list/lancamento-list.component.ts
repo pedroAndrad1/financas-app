@@ -31,13 +31,6 @@ export class LancamentoListComponent implements OnInit {
       },
       error => alert('Error ao carregar as lancamentos')
     )
-
-    this.categoriaService.getAll().subscribe(
-      res => {
-        this.categorias = res;
-      },
-      error => alert('Error ao carregar as categorias')
-    )
   }
 
   deletar(lancamento: Lancamento) {
@@ -51,20 +44,6 @@ export class LancamentoListComponent implements OnInit {
         error => alert("Erro ao deletar a lancamento")
       )
     }
-
-  }
-
-  lancamentoCategoria(lancamento: Lancamento) {
-   //Evita erro de context, pois nao vai fazer o filter se nao tiver carregado do servidor
-   //as categorias
-    if(this.categorias.length > 0){
-      const categoria = this.categorias.filter(categoria => categoria.id == lancamento.categoriaId);
-      return categoria[0].nome;
-    }
-    else{
-      return ""; 
-    }
-
 
   }
 }
