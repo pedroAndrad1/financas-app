@@ -7,15 +7,15 @@
     </ol>
   </nav>
 
-  <div class="row mb-5">
-    <div class="col-9">
+  <div class="row mb-5 justify-content-center">
+    <div class="col-sm-10">
       <h1 class="h2 border-left pl-4 ">
         {{ titulo }}
       </h1>
     </div>
-    <div class="col-3">
-      <a routerLink="/lancamentos" class="btn btn-secondary float-right ">
-       Voltar para lista de lançamentos
+    <div class="col-2">
+      <a routerLink="/lancamentos" class="btn btn-secondary flex-fill">
+       Voltar
       </a>
     </div>
   </div>
@@ -66,8 +66,8 @@
           <div class="form-group col-md-2">
            <label for="tipo">Tipo</label>
            <select name="tipo" id="tipo" class="form-control" formControlName="tipo">
-             <option value="despesa">Despesa</option>
-             <option value="receita">Receita</option>
+            <!--Nao sei pq do propertie binding no value, mas so funciona assim-->
+             <option *ngFor="let tipo of tipos" [value]="tipo.valor">{{ tipo.texto }}</option>
            </select>
            <!--Mensagens de erro-->
            <div class="text-danger" *ngIf="lancamentoForm.get('tipo').invalid && lancamentoForm.get('tipo').touched">
@@ -105,8 +105,7 @@
           <div class="form-group col-md-2">
             <label for="categoriaId">Categoria</label>
             <select name="categoriaId" id="categoriaId" class="form-control" formControlName="categoriaId">
-              <option value="despesa">Despesa</option>
-              <option value="receita">Receita</option>
+              <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nome }}</option>
             </select>
             <!--Mensagens de erro-->
             <div class="text-danger" *ngIf="lancamentoForm.get('categoriaId').invalid && lancamentoForm.get('categoriaId').touched">
@@ -158,5 +157,7 @@
       Salvar
     </button>
   </form>
+
+ <!-- <pre>{{ lancamento | json }}</pre> -->
 
 </div>

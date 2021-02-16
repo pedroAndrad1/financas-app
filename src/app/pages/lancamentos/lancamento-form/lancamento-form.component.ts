@@ -1,8 +1,11 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { Categoria } from 'src/app/models/categoria.model';
 import { Lancamento } from 'src/app/models/lancamento.model';
+import { CategoriaService } from 'src/app/services/categoria.service';
 import { LancamentoService } from 'src/app/services/lancamento.service';
 import toastr from "toastr";
 
@@ -20,6 +23,7 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
   lancamento = new Lancamento;
   titulo: string;
   errorsMessages: string[];
+  categorias: Categoria[];
 
   //Mascara para os valores
   imaskValores = {
@@ -54,7 +58,8 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
     private route: ActivatedRoute,
     private router: Router,
     private lancamentoService: LancamentoService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private categoriaService: CategoriaService
   ) { }
 
   ngOnInit() {
@@ -63,6 +68,7 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
     if (this.acao == 'edicao') {
       this.getLancamento();
     }
+    this.getCategorias();
   }
 
   ngAfterContentChecked(): void {
@@ -80,14 +86,13 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
       id: [null],
       nome: [null, Validators.compose([Validators.required, Validators.minLength(2)])],
       descricao: [null],
-      tipo: [null, [Validators.required]],
+      tipo: ['despesa', [Validators.required]],
       valor: [null, [Validators.required]],
       data: [null, [Validators.required]],
-      pago: [null, [Validators.required]],
+      pago: [true, [Validators.required]],
       categoriaId: [null, [Validators.required]],
 
     })
-    console.log(this.lancamentoForm);
   }
 
   //Pega uma lancamento para ser editada do banco
@@ -173,5 +178,25 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
 
   private setPagoStatus(status: boolean){
     this.lancamentoForm.get('pago').setValue(status);
+  }
+
+  //Retorna um array de objetos com as opcoes de tipo de lancamento
+  get tipos(): Array<any>{
+
+    return Object.entries(Lancamento.tipos).map(
+      ([valor, texto]) =>{
+        return {
+          texto,
+          valor
+        }
+      }
+    )
+
+  }
+
+  private getCategorias(){
+    this.categoriaService.getAll().subscribe(
+      res => this.categorias = res
+    )
   }
 }

@@ -45,11 +45,12 @@
     {
       "id": 3,
       "nome": "Salário na Empresa X",
-      "categoriaId": 4,
-      "pago": true,
-      "data": "15/10/2018",
+      "descricao": null,
+      "tipo": "receita",
       "valor": "4405,49",
-      "tipo": "receita"
+      "data": "15/10/2018",
+      "pago": true,
+      "categoriaId": "4"
     },
     {
       "id": 4,
