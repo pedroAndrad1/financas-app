@@ -46,6 +46,36 @@
         "nome": "Moradia",
         "descricao": "Pagamentos de Contas da Casa"
       }
+    },
+    {
+      "id": 57,
+      "nome": "Salário na Empresa X",
+      "descricao": null,
+      "tipo": "receita",
+      "valor": "4405,49",
+      "data": "16/02/2021",
+      "pago": true,
+      "categoriaId": "4",
+      "categoria": {
+        "id": 4,
+        "nome": "Salário",
+        "descricao": "Recebimento de Salário"
+      }
+    },
+    {
+      "id": 58,
+      "nome": "Suplementos",
+      "descricao": null,
+      "tipo": "despesa",
+      "valor": "100,00",
+      "data": "16/02/2021",
+      "pago": true,
+      "categoriaId": "2",
+      "categoria": {
+        "id": 2,
+        "nome": "Saúde",
+        "descricao": "Plano de Saúde e Remédios"
+      }
     }
   ]
 }

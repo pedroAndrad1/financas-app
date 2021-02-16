@@ -28,6 +28,8 @@ export class LancamentoListComponent implements OnInit {
           const lancamento = Object.assign(new Lancamento(), element)
           this.lancamentos.push(lancamento);
         })
+        //Ordenando o lancamentos dos mais recentes para os mais antigos
+        this.lancamentos = this.lancamentos.sort( (a,b) => b.id - a.id);
       },
       error => alert('Error ao carregar as lancamentos')
     )
