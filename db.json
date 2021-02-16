@@ -33,141 +33,19 @@
   ],
   "lancamentos": [
     {
-      "id": 2,
-      "nome": "Suplementos",
-      "descricao": null,
-      "tipo": "despesa",
-      "valor": "100,00",
-      "data": "14/10/2018",
-      "pago": false,
-      "categoriaId": 2
-    },
-    {
-      "id": 3,
-      "nome": "Salário na Empresa X",
-      "descricao": null,
-      "tipo": "receita",
-      "valor": "4405,49",
-      "data": "15/10/2018",
-      "pago": true,
-      "categoriaId": "4"
-    },
-    {
-      "id": 4,
-      "nome": "Aluguel de Filme",
-      "categoriaId": 3,
-      "pago": true,
-      "data": "16/10/2018",
-      "valor": "15,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 5,
-      "nome": "Suplementos",
-      "categoriaId": 2,
-      "pago": true,
-      "data": "17/10/2018",
-      "valor": "30,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 6,
-      "nome": "Video Game da Filha",
-      "categoriaId": 3,
-      "pago": false,
-      "data": "17/10/2018",
-      "valor": "15,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 11,
-      "nome": "Uber",
-      "categoriaId": 6,
-      "pago": true,
-      "data": "17/10/2018",
-      "valor": "30,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 12,
+      "id": 56,
       "nome": "Aluguel",
-      "categoriaId": 1,
-      "pago": false,
-      "data": "23/10/2018",
-      "valor": "15,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 13,
-      "nome": "Gás de Cozinha",
-      "categoriaId": 1,
-      "pago": false,
-      "data": "25/10/2018",
-      "valor": "30,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 14,
-      "nome": "Pagamento Pelo Projeto XYZ",
-      "categoriaId": 5,
+      "descricao": "Caro",
+      "tipo": "despesa",
+      "valor": "2000,00",
+      "data": "15/02/2021",
       "pago": true,
-      "data": "25/10/2018",
-      "valor": "2980,00",
-      "tipo": "receita"
-    },
-    {
-      "id": 19,
-      "nome": "Aluguel de Filme",
-      "categoriaId": 3,
-      "pago": false,
-      "data": "07/11/2018",
-      "valor": "15,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 21,
-      "nome": "Video Game da Filha",
-      "categoriaId": 3,
-      "pago": true,
-      "data": "17/11/2018",
-      "valor": "30,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 22,
-      "nome": "Cinema",
-      "categoriaId": 3,
-      "pago": true,
-      "data": "18/11/2018",
-      "valor": "15,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 23,
-      "nome": "Jiu Jitsu",
-      "categoriaId": 2,
-      "pago": false,
-      "data": "21/11/2018",
-      "valor": "130,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 44,
-      "nome": "Uber",
-      "categoriaId": 6,
-      "pago": true,
-      "data": "28/11/2018",
-      "valor": "15,00",
-      "tipo": "despesa"
-    },
-    {
-      "id": 55,
-      "nome": "Cinema",
-      "categoriaId": 3,
-      "pago": false,
-      "data": "28/11/2018",
-      "valor": "30,00",
-      "tipo": "despesa"
+      "categoriaId": "1",
+      "categoria": {
+        "id": 1,
+        "nome": "Moradia",
+        "descricao": "Pagamentos de Contas da Casa"
+      }
     }
   ]
 }
