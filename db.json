@@ -65,9 +65,9 @@
     {
       "id": 58,
       "nome": "Suplementos",
-      "descricao": null,
+      "descricao": "Whey",
       "tipo": "despesa",
-      "valor": "100,00",
+      "valor": "150,00",
       "data": "16/02/2021",
       "pago": true,
       "categoriaId": "2",

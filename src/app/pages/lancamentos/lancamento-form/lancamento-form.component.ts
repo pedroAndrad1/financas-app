@@ -125,9 +125,9 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
 
   private addLancamento() {
     //Montando a lancamento que sera enviada para o servidor
-    const lancamento = Object.assign(new Lancamento(), this.lancamentoForm.value);
+    const lancamento = Lancamento.fromJson(this.lancamentoForm.value);
 
-    this.lancamentoService.addLancamento(lancamento)
+    this.lancamentoService.create(lancamento)
       .subscribe(
         res => {
           toastr.success("Ação realizada com sucesso!");
@@ -146,7 +146,7 @@ export class LancamentoFormComponent implements OnInit, AfterContentChecked {
   private updateLancamento() {
 
     //Montando a lancamento que sera enviada para o servidor
-    const lancamento = Object.assign(new Lancamento(), this.lancamentoForm.value);
+    const lancamento = Lancamento.fromJson(this.lancamentoForm.value);
 
     this.lancamentoService.update(lancamento)
       .subscribe(

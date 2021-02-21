@@ -108,7 +108,7 @@ export class CategoriaFormComponent implements OnInit, AfterContentChecked {
      //Montando a categoria que sera enviada para o servidor
      const categoria = Object.assign(new Categoria(), this.categoriaForm.value);
 
-    this.categoriaService.update(categoria.id, categoria)
+    this.categoriaService.update(categoria)
       .subscribe(
         res => {
           toastr.success("Ação realizada com sucesso!");

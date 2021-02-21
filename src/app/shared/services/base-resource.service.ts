@@ -27,8 +27,8 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
         return this.httpClient.post<T>(this.API_BASE, resource);
     }
 
-    update(id: number, resource: T): Observable<T> {
-        return this.httpClient.put<T>(`${this.API_BASE}/${id}`, resource);
+    update(resource: T): Observable<T> {
+        return this.httpClient.put<T>(`${this.API_BASE}/${resource.id}`, resource);
     }
 
     delete(id: number): Observable<T> {
