@@ -10,7 +10,7 @@ import { BaseResourceService } from './base-resource.service';
 export class CategoriaService extends BaseResourceService<Categoria> {
   
   constructor(protected injector: Injector) {
-    super("http://localhost:3000/categorias", injector)
+    super("http://localhost:3000/categorias", injector, Categoria.fromJson)
   }
 
 

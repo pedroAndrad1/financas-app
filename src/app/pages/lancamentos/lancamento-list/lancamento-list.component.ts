@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/shared/models/categoria.model';
-import { CategoriaService } from 'src/app/shared/services/categoria.service';
 import { Lancamento } from '../../../shared/models/lancamento.model';
 import { LancamentoService } from '../../../shared/services/lancamento.service';
 
@@ -16,18 +15,12 @@ export class LancamentoListComponent implements OnInit {
 
   constructor(
     private lancamentoService: LancamentoService,
-    private categoriaService: CategoriaService
   ) { }
 
   ngOnInit() {
     this.lancamentoService.getAll().subscribe(
       res => {
-        //Convertendo os elementos vindo do servidor para lancamentos. Assim eles terao as
-        //funcoes da classe lancamento. Estou interessado na pagoText
-        res.forEach(element => {
-          const lancamento = Object.assign(new Lancamento(), element)
-          this.lancamentos.push(lancamento);
-        })
+        this.lancamentos = res;
         //Ordenando o lancamentos dos mais recentes para os mais antigos
         this.lancamentos = this.lancamentos.sort( (a,b) => b.id - a.id);
       },

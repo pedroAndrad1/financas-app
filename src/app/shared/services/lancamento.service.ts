@@ -15,7 +15,7 @@ export class LancamentoService extends BaseResourceService<Lancamento>{
     private categoriaService: CategoriaService,
     protected injector: Injector
     ) {
-      super("http://localhost:3000/lancamentos", injector);
+      super("http://localhost:3000/lancamentos", injector, Lancamento.fromJson);
     }
 
   create(lancamento: Lancamento): Observable<Lancamento>{
