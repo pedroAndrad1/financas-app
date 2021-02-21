@@ -41,7 +41,8 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
 
     create(resource: T): Observable<T> {
         return this.httpClient.post<T>(this.API_BASE, resource).pipe(
-            null,
+            //E necessario fazer algo no pipe, nao poder null
+            map(() => resource),
             //Segundo parametro do pipe para pegar erros
             catchError(this.handleError)
         );
@@ -49,7 +50,8 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
 
     update(resource: T): Observable<T> {
         return this.httpClient.put<T>(`${this.API_BASE}/${resource.id}`, resource).pipe(
-            null,
+            //E necessario fazer algo no pipe, nao poder null
+            map(() => resource),
             //Segundo parametro do pipe para pegar erros
             catchError(this.handleError)
         );
@@ -57,7 +59,8 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
 
     delete(id: number): Observable<T> {
         return this.httpClient.delete<T>(`${this.API_BASE}/${id}`).pipe(
-            null,
+            //E necessario fazer algo no pipe, nao poder null
+            map(() => null),
             //Segundo parametro do pipe para pegar erros
             catchError(this.handleError)
         );
