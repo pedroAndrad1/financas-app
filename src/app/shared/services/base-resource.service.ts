@@ -1,9 +1,9 @@
 //Base para os services
 import { HttpClient } from "@angular/common/http";
 import { Injector } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { BaseResourceModel } from '../models/base-resource.model';
-import { map } from "rxjs/operators";
+import { map, catchError } from "rxjs/operators";
 
 export abstract class BaseResourceService<T extends BaseResourceModel>{
       
@@ -23,7 +23,9 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
         return this.httpClient.get<T[]>(this.API_BASE).pipe(
           //O bind e pra dizer que o contexto do 'this' na function jsonToResources e a classe
           //BaseResourceService  e nao o map. Assim a function vai converter os elementos json corretamente.
-          map(this.jsonToResources.bind(this))
+          map(this.jsonToResources.bind(this)),
+          //Segundo parametro do pipe para pegar erros
+          catchError(this.handleError)
         );
     }
 
@@ -31,21 +33,42 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
         return this.httpClient.get<T>(`${this.API_BASE}/${id}`).pipe(
           //O bind e pra dizer que o contexto do 'this' na function jsonToResources e a classe
           //BaseResourceService  e nao o map. Assim a function vai converter os elementos json corretamente.
-          map(this.jsonToResource.bind(this))
+          map(this.jsonToResource.bind(this)),
+          //Segundo parametro do pipe para pegar erros
+          catchError(this.handleError)
         );
     }
 
     create(resource: T): Observable<T> {
-        return this.httpClient.post<T>(this.API_BASE, resource);
+        return this.httpClient.post<T>(this.API_BASE, resource).pipe(
+            null,
+            //Segundo parametro do pipe para pegar erros
+            catchError(this.handleError)
+        );
     }
 
     update(resource: T): Observable<T> {
-        return this.httpClient.put<T>(`${this.API_BASE}/${resource.id}`, resource);
+        return this.httpClient.put<T>(`${this.API_BASE}/${resource.id}`, resource).pipe(
+            null,
+            //Segundo parametro do pipe para pegar erros
+            catchError(this.handleError)
+        );
     }
 
     delete(id: number): Observable<T> {
-        return this.httpClient.delete<T>(`${this.API_BASE}/${id}`);
+        return this.httpClient.delete<T>(`${this.API_BASE}/${id}`).pipe(
+            null,
+            //Segundo parametro do pipe para pegar erros
+            catchError(this.handleError)
+        );
     }
+
+    //Para setar os erros no console e eu poderver o que esta acontecendo
+    protected handleError(error: any): Observable<any>{
+        console.log("ERRO NA REQUISIÇÃO => ", error);
+        return throwError(error);
+      }
+
 
     //Metodos de conversao
 
